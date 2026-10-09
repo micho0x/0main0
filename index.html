@@ -1,264 +1,279 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" class="dark">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>0xmicho - Portfolio</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700;900&family=Amiri:ital@0;1&display=swap" rel="stylesheet">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class', 
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        arabic: ['Cairo', 'sans-serif'],
-                        amiri: ['Amiri', 'serif'],
-                    },
-                    colors: {
-                        brand: {
-                            light: '#10b981', // Emerald green
-                            dark: '#059669',  
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>0xmicho | Mohamed – Junior Bug Bounty Hunter</title>
+<meta name="description" content="Mohamed (0xmicho), 16, Junior Bug Bounty Hunter who loves technology. Find me on X, GitHub and HackerOne.">
+<meta name="theme-color" content="#07090b">
+<meta property="og:title" content="0xmicho – Junior Bug Bounty Hunter">
+<meta property="og:description" content="Mohamed, 16. Bug bounty, web security and technology.">
+<meta property="og:type" content="website">
+<meta name="color-scheme" content="dark light">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><rect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27%23059669%27/><text x=%2750%27 y=%2767%27 font-size=%2750%27 text-anchor=%27middle%27 fill=%27white%27 font-family=%27monospace%27 font-weight=%27bold%27>0x</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;800&family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>
+/* Apply saved / system theme before paint (no flash) */
+(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
+document.documentElement.setAttribute('data-theme',t)})();
+</script>
+<style>
+:root{
+  --bg:#f4f6f8;--fg:#0f172a;--mut:#5b6b80;--card:rgba(255,255,255,.78);--bd:rgba(15,23,42,.12);
+  --ac:#047857;--ac2:#10b981;--dot:4,120,87;--tile:#e8edf2;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --ar:'Cairo','Segoe UI',Tahoma,Arial,sans-serif;
+  --serif:'Amiri','Traditional Arabic','Times New Roman',serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Consolas,monospace;
+}
+[data-theme=dark]{
+  --bg:#07090b;--fg:#e8ecef;--mut:#8b9aab;--card:rgba(15,18,21,.75);--bd:rgba(255,255,255,.1);
+  --ac:#10b981;--ac2:#34d399;--dot:16,185,129;--tile:#171c20;
+}
+*{box-sizing:border-box;margin:0}
+/* Fluid root size: ~16px phones, ~20px 1080p screens/TVs, up to 32px on 4K */
+html{font-size:clamp(16px,.55vw + 10px,32px);-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;background:var(--bg);color:var(--fg);
+  font-family:var(--sans);line-height:1.6;transition:background .4s,color .4s;
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+html[lang=ar] body{font-family:var(--ar)}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+header,main,footer{position:relative;z-index:1}
+header{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;
+  padding:.75rem clamp(1rem,4vw,2.5rem);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  background:color-mix(in srgb,var(--bg) 70%,transparent);border-bottom:1px solid var(--bd)}
+.logo{font:800 1.25rem/1 var(--mono);color:var(--ac);letter-spacing:-.04em;direction:ltr}
+.logo b{color:var(--fg)}
+.tools{display:flex;gap:.6rem}
+.btn{min-width:2.75rem;height:2.75rem;padding:0 1rem;border-radius:99px;border:1px solid var(--bd);background:var(--tile);
+  color:var(--fg);font:700 .85rem var(--sans);cursor:pointer;display:grid;place-items:center;transition:transform .2s,background .2s,border-color .2s}
+.btn:hover{border-color:var(--ac);transform:translateY(-1px)}
+.btn:active{transform:scale(.95)}
+.btn svg{width:1.2rem;height:1.2rem}
+[data-theme=dark] .moon,[data-theme=light] .sun{display:none}
+:focus-visible{outline:3px solid var(--ac2);outline-offset:4px;border-radius:12px}
 
-    <style>
-        body {
-            transition: background-color 0.5s ease, color 0.5s ease;
-        }
+main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:clamp(1.5rem,5vh,4rem) clamp(1rem,4vw,2rem)}
+#view{width:100%;max-width:46rem;display:flex;flex-direction:column;align-items:center;text-align:center;
+  transition:opacity .3s,transform .3s}
+#view.fading{opacity:0;transform:translateY(12px)}
+.phrases{margin-bottom:2rem;display:grid;gap:1.25rem}
+.p1{font:700 clamp(1.7rem,6vw,2.3rem)/1.4 var(--serif)}
+.p2{font:700 clamp(1.3rem,4.5vw,1.7rem)/1.7 var(--serif);color:var(--ac);text-wrap:balance}
+.lbl{display:block;font-size:.8rem;color:var(--mut);font-family:var(--sans)}
+html[lang=ar] .p1{font-size:clamp(2rem,7vw,2.8rem)}
+html[lang=ar] .p2{font-size:clamp(1.6rem,5.5vw,2.2rem)}
 
-        .transition-colors-all * {
-            transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease, fill 0.5s ease;
-        }
+.card{width:100%;padding:clamp(1.5rem,5vw,2.75rem);border-radius:1.75rem;background:var(--card);
+  border:1px solid var(--bd);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  box-shadow:0 0 0 1px transparent,0 20px 50px -20px rgba(var(--dot),.35)}
+.avatar{position:relative;overflow:hidden;width:6.5rem;height:6.5rem;margin:0 auto 1.1rem;border-radius:50%;display:grid;place-items:center;font:800 1.8rem var(--mono);color:#fff;background:linear-gradient(135deg,#047857,#10b981);box-shadow:0 0 0 4px var(--bg),0 0 0 6px var(--ac);direction:ltr}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.badge{display:inline-block;padding:.35rem 1rem;border-radius:99px;font-weight:800;font-size:.85rem;
+  color:var(--ac);background:rgba(var(--dot),.12);border:1px solid rgba(var(--dot),.3)}
+.intro{margin-top:1.25rem;font-size:clamp(1.05rem,3.2vw,1.35rem);font-weight:500;color:var(--fg);max-width:36rem;margin-inline:auto;text-wrap:pretty}
+.handle{display:inline-flex;align-items:center;gap:.4rem;margin-top:1rem;padding:.4rem .9rem;border-radius:.7rem;
+  border:1px dashed var(--bd);background:transparent;color:var(--ac);font:700 1rem var(--mono);cursor:pointer;direction:ltr;transition:border-color .2s,background .2s}
+.handle:hover{border-color:var(--ac);background:rgba(var(--dot),.08)}
+.handle small{font:400 .75rem var(--sans);color:var(--mut)}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-top:1.25rem;direction:ltr}
+.chips span{padding:.25rem .75rem;border-radius:.5rem;font:400 .8rem var(--mono);background:var(--tile);border:1px solid var(--bd);color:var(--mut)}
 
-        .content-fade {
-            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-            opacity: 1;
-            transform: translateY(0);
-        }
+.term{margin-top:1.75rem;text-align:left;direction:ltr;border-radius:1rem;overflow:hidden;border:1px solid var(--bd);background:#06080a;color:#d1fae5;font:400 .85rem/1.8 var(--mono)}
+.term-bar{display:flex;gap:.4rem;padding:.6rem .85rem;background:#10151a}
+.term-bar i{width:.65rem;height:.65rem;border-radius:50%;background:#374151}
+.term-bar i:first-child{background:#ef4444}.term-bar i:nth-child(2){background:#f59e0b}.term-bar i:nth-child(3){background:#10b981}
+#term{padding:.8rem 1rem 1rem;min-height:8.2rem;white-space:pre-wrap;word-break:break-word}
+.pr{color:#10b981}.out{color:#9ca3af}
+.cur{display:inline-block;width:.55em;height:1em;vertical-align:-.15em;background:#10b981;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
 
-        .content-fade-out {
-            opacity: 0;
-            transform: translateY(15px);
-        }
+hr{border:0;border-top:1px solid var(--bd);margin:2rem 0 1.5rem}
+.links-t{font-size:.9rem;color:var(--mut);margin-bottom:1rem}
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));gap:.9rem}
+.link{display:flex;flex-direction:column;align-items:center;gap:.5rem;padding:1.1rem .75rem;border-radius:1.1rem;
+  background:var(--tile);border:1px solid var(--bd);color:var(--fg);text-decoration:none;transition:transform .25s,border-color .25s,background .25s,color .25s}
+.link:hover,.link:focus-visible{transform:translateY(-4px) scale(1.03);border-color:var(--ac);background:rgba(var(--dot),.1)}
+.link svg{width:1.9rem;height:1.9rem}
+.link .h1{font:800 1.6rem/1.2rem var(--sans);letter-spacing:-.05em;height:1.9rem;display:grid;place-items:center}
+.link b{font-size:.95rem}
+.link span{font:400 .75rem var(--mono);color:var(--mut);direction:ltr}
 
-        .social-link svg, .social-link .text-icon {
-            transition: transform 0.3s ease, filter 0.3s ease, color 0.3s ease;
-        }
-        
-        .social-link:hover svg, .social-link:hover .text-icon {
-            transform: scale(1.15) translateY(-2px);
-        }
-
-        .dark .glow-effect {
-            box-shadow: 0 0 30px rgba(16, 185, 129, 0.08);
-            border-color: rgba(16, 185, 129, 0.2);
-        }
-        
-        .light .glow-effect {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            border-color: rgba(0, 0, 0, 0.1);
-        }
-    </style>
+footer{padding:1.25rem 1rem 1.5rem;text-align:center;font-size:.8rem;color:var(--mut)}
+kbd{font:700 .75rem var(--mono);padding:.1rem .45rem;border-radius:.35rem;border:1px solid var(--bd);background:var(--tile)}
+.hint{display:none}
+@media (hover:hover) and (pointer:fine){.hint{display:block;margin-top:.35rem}}
+#toast{position:fixed;left:50%;bottom:calc(1.5rem + env(safe-area-inset-bottom));transform:translate(-50%,2rem);opacity:0;
+  z-index:9;padding:.6rem 1.2rem;border-radius:99px;background:var(--ac);color:#fff;font-weight:700;font-size:.9rem;transition:.3s;pointer-events:none}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+@media (max-width:380px){.links{grid-template-columns:1fr 1fr}.link{padding:.9rem .5rem}}
+@media (max-height:520px) and (orientation:landscape){main{justify-content:flex-start}.phrases{margin-bottom:1rem}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
-<body class="bg-gray-50 text-gray-900 dark:bg-[#0a0a0a] dark:text-gray-100 min-h-screen flex flex-col font-sans transition-colors-all">
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
 
-    <nav class="w-full p-4 sm:p-6 flex justify-between items-center z-20 sticky top-0 backdrop-blur-xl bg-white/50 dark:bg-[#0a0a0a]/50 border-b border-gray-200/50 dark:border-gray-800/50">
-        <div class="text-xl font-black tracking-tighter text-brand-dark dark:text-brand-light">
-            0x<span class="text-gray-900 dark:text-white">micho</span>
-        </div>
-        
-        <div class="flex items-center gap-3 sm:gap-4">
-            <button id="themeToggleBtn" onclick="toggleTheme()" class="p-2.5 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors focus:outline-none" aria-label="Toggle Theme">
-                <svg id="sunIcon" class="w-5 h-5 hidden dark:block text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                </svg>
-                <svg id="moonIcon" class="w-5 h-5 block dark:hidden text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                </svg>
-            </button>
+<header>
+  <div class="logo" aria-label="0xmicho">0x<b>micho</b></div>
+  <div class="tools">
+    <button class="btn" id="themeBtn" aria-label="Toggle theme" title="T">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+    <button class="btn" id="langBtn" aria-label="Change language" title="L">AR</button>
+  </div>
+</header>
 
-            <button id="langToggleBtn" onclick="toggleLanguage()" class="px-5 py-2 font-bold text-sm rounded-full bg-gray-900 text-white dark:bg-white dark:text-black hover:bg-brand-dark dark:hover:bg-brand-light transition-colors focus:outline-none min-w-[3.5rem]">
-                AR
-            </button>
-        </div>
-    </nav>
+<main>
+  <div id="view">
+    <section class="phrases">
+      <div><h1 class="p1" id="bless"></h1><small class="lbl" id="blessL"></small></div>
+      <div><h2 class="p2" id="verse"></h2><small class="lbl" id="verseL"></small></div>
+    </section>
 
-    <main class="flex-grow flex flex-col items-center justify-center p-6 relative overflow-hidden">
-        
-        <!-- Background Glowing Orbs -->
-        <div class="absolute top-0 left-1/4 w-72 h-72 bg-brand-light/10 dark:bg-brand-dark/10 rounded-full blur-[100px] pointer-events-none"></div>
-        <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-blue-500/10 dark:bg-blue-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+    <article class="card">
+      <div class="avatar">0x<img src="image.jpg" alt="Mohamed (0xmicho)" onerror="this.remove()"></div>
+      <span class="badge" id="badge"></span>
+      <p class="intro" id="intro"></p>
+      <button class="handle" id="copy" type="button" aria-label="Copy username">0xmicho <small id="copyT"></small></button>
+      <div class="chips" id="chips" aria-label="Interests"></div>
 
-        <div id="contentContainer" class="content-fade w-full max-w-3xl z-10 flex flex-col items-center text-center">
-            
-            <div class="mb-12 space-y-6">
-                <div class="space-y-1">
-                    <h1 id="phrase1" class="text-2xl sm:text-3xl font-amiri font-bold text-gray-800 dark:text-gray-200">
-                        Peace be upon the Prophet
-                    </h1>
-                    <p id="phrase1Label" class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest">
-                        (Islamic Blessing)
-                    </p>
-                </div>
+      <div class="term" aria-hidden="true">
+        <div class="term-bar"><i></i><i></i><i></i></div>
+        <div id="term"></div>
+      </div>
 
-                <div class="space-y-2 mt-4 px-4">
-                    <h2 id="phrase2" class="text-xl sm:text-2xl font-amiri font-bold text-brand-dark dark:text-brand-light leading-relaxed">
-                        My Lord, indeed I am, for whatever good You would send down to me, in need.
-                    </h2>
-                    <p id="phrase2Label" class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest">
-                        (Quranic Verse)
-                    </p>
-                </div>
-            </div>
+      <hr>
+      <p class="links-t" id="linksT"></p>
+      <nav class="links" aria-label="Social links">
+        <a class="link" href="https://x.com/0xmicho1" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <b>X</b><span>@0xmicho1</span></a>
+        <a class="link" href="https://github.com/micho0x" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <b>GitHub</b><span>micho0x</span></a>
+        <a class="link" href="https://hackerone.com/0xmicho?type=user" target="_blank" rel="noopener noreferrer">
+          <div class="h1" aria-hidden="true">h1</div>
+          <b>HackerOne</b><span>0xmicho</span></a>
+      </nav>
+    </article>
+  </div>
+</main>
 
-            <div class="bg-white/80 dark:bg-[#121212]/80 backdrop-blur-md rounded-3xl p-8 sm:p-12 w-full border border-gray-100 dark:border-gray-800 glow-effect">
-                
-                <div class="mb-6">
-                    <span id="badge" class="inline-block px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider bg-brand-light/10 text-brand-dark dark:text-brand-light border border-brand-light/20">
-                        Junior Bug Bounty Hunter
-                    </span>
-                </div>
+<footer>
+  <div>© <span id="yr"></span> 0xmicho</div>
+  <div class="hint"><kbd>T</kbd> <span id="hT"></span> · <kbd>L</kbd> <span id="hL"></span></div>
+</footer>
+<div id="toast" role="status" aria-live="polite"></div>
 
-                <p id="introText" class="text-lg sm:text-xl md:text-2xl leading-relaxed text-gray-700 dark:text-gray-300 font-medium">
-                    I am Mohamed. Nickname: <span class="font-black text-brand-dark dark:text-brand-light">0xmicho</span>. I am 16 years old and I love technology.
-                </p>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var T={
+ en:{dir:'ltr',btn:'AR',bless:'Peace be upon the Prophet',blessL:'(Islamic blessing)',
+  verse:'My Lord, indeed I am, for whatever good You would send down to me, in need',verseL:'(Quran 28:24)',
+  badge:'Junior Bug Bounty Hunter',intro:"I'm Mohamed from Egypt. I'm 16 years old and I love technology and games.",
+  copy:'tap to copy',copied:'Username copied',linksT:'Find me online',hT:'theme',hL:'language'},
+ ar:{dir:'rtl',btn:'EN',bless:'صلِّ على النبي ﷺ',blessL:'',
+  verse:'رَبِّ إِنِّي لِمَا أَنزَلْتَ إِلَيَّ مِنْ خَيْرٍ فَقِيرٌ',verseL:'',
+  badge:'Junior Bug Bounty Hunter',intro:'أنا محمد من مصر، عمري 16 سنة. بحب التكنولوجيا والألعاب.',
+  copy:'اضغط للنسخ',copied:'تم نسخ اسم المستخدم',linksT:'تجدني هنا',hT:'المظهر',hL:'اللغة'}
+};
+var CHIPS=['bug bounty','web security','recon','automation'];
+var LINES=[['whoami','0xmicho'],['echo $STATUS','learning, hunting, leveling up'],['echo $MOTTO','learn. break. report. repeat.']];
+var root=document.documentElement,lang='en',dot='16,185,129';
 
-                <hr class="my-10 border-gray-200 dark:border-gray-800/80">
+function store(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function load(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function toast(m){var t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.i);toast.i=setTimeout(function(){t.classList.remove('show')},1800)}
 
-                <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-10">
-                    
-                    <!-- X (Twitter) -->
-                    <a href="https://x.com/0xmicho1" target="_blank" rel="noopener noreferrer" class="social-link group flex flex-col items-center gap-3" title="X">
-                        <div class="p-4 rounded-2xl bg-gray-100 dark:bg-gray-800/80 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all shadow-sm">
-                            <svg class="w-7 h-7 text-gray-600 dark:text-gray-300 group-hover:text-white dark:group-hover:text-black" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                            </svg>
-                        </div>
-                        <span class="text-xs font-bold text-gray-500 dark:text-gray-400">X</span>
-                    </a>
+/* ---------- language ---------- */
+function paint(l){
+  var d=T[l];lang=l;root.lang=l;root.dir=d.dir;
+  $('bless').textContent=d.bless;$('verse').textContent=d.verse;
+  [['blessL',d.blessL],['verseL',d.verseL]].forEach(function(p){var e=$(p[0]);e.textContent=p[1];e.hidden=!p[1]});
+  $('badge').textContent=d.badge;$('intro').innerHTML=d.intro;
+  $('copyT').textContent=d.copy;$('linksT').textContent=d.linksT;
+  $('hT').textContent=d.hT;$('hL').textContent=d.hL;$('langBtn').textContent=d.btn;
+  document.title=l==='ar'?'0xmicho | محمد – Junior Bug Bounty Hunter':'0xmicho | Mohamed – Junior Bug Bounty Hunter';
+}
+function setLang(l,animate){
+  store('lang',l);
+  if(!animate){paint(l);return}
+  var v=$('view');v.classList.add("fading");
+  setTimeout(function(){paint(l);v.classList.remove("fading")},300);
+}
+function toggleLang(){setLang(lang==='en'?'ar':'en',true)}
 
-                    <!-- GitHub -->
-                    <a href="https://github.com/micho0x" target="_blank" rel="noopener noreferrer" class="social-link group flex flex-col items-center gap-3" title="GitHub">
-                        <div class="p-4 rounded-2xl bg-gray-100 dark:bg-gray-800/80 group-hover:bg-[#24292e] group-hover:text-white transition-all shadow-sm">
-                            <svg class="w-7 h-7 text-gray-600 dark:text-gray-300 group-hover:text-white" viewBox="0 0 24 24" fill="currentColor">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-                            </svg>
-                        </div>
-                        <span class="text-xs font-bold text-gray-500 dark:text-gray-400">GitHub</span>
-                    </a>
+/* ---------- theme ---------- */
+function readDot(){dot=getComputedStyle(root).getPropertyValue('--dot').trim()||dot}
+function setTheme(t){root.setAttribute('data-theme',t);store('theme',t);
+  var m=document.querySelector('meta[name=theme-color]');if(m)m.content=t==='dark'?'#07090b':'#f4f6f8';
+  readDot();drawStatic()}
+function toggleTheme(){setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark')}
 
-                    <!-- HackerOne (Text h1) -->
-                    <a href="https://hackerone.com/0xmicho?type=user" target="_blank" rel="noopener noreferrer" class="social-link group flex flex-col items-center gap-3" title="HackerOne">
-                        <div class="p-4 w-[60px] h-[60px] flex items-center justify-center rounded-2xl bg-gray-100 dark:bg-gray-800/80 group-hover:bg-brand-dark transition-all shadow-sm">
-                            <span class="text-icon font-black text-2xl tracking-tighter text-gray-800 dark:text-gray-200 group-hover:text-white leading-none">
-                                h1
-                            </span>
-                        </div>
-                        <span class="text-xs font-bold text-gray-500 dark:text-gray-400">HackerOne</span>
-                    </a>
+/* ---------- terminal ---------- */
+function esc(s){return s.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
+function term(){
+  var el=$('term'),cur='<span class="cur"></span>',html='',reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){LINES.forEach(function(l){html+='<span class="pr">$</span> '+esc(l[0])+'\n<span class="out">'+esc(l[1])+'</span>\n'});el.innerHTML=html+'<span class="pr">$</span> '+cur;return}
+  var li=0,ci=0;
+  (function step(){
+    if(li>=LINES.length){el.innerHTML=html+'<span class="pr">$</span> '+cur;return}
+    var cmd=LINES[li][0];
+    if(ci<=cmd.length){el.innerHTML=html+'<span class="pr">$</span> '+esc(cmd.slice(0,ci))+cur;ci++;setTimeout(step,ci===1?500:55)}
+    else{html+='<span class="pr">$</span> '+esc(cmd)+'\n<span class="out">'+esc(LINES[li][1])+'</span>\n';li++;ci=0;setTimeout(step,450)}
+  })();
+}
 
-                </div>
-            </div>
-        </div>
-    </main>
+/* ---------- animated network background ---------- */
+var cv=$('bg'),cx=cv.getContext('2d'),W=0,Hh=0,pts=[],raf=0,still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function size(){
+  var r=Math.min(window.devicePixelRatio||1,1.5);W=innerWidth;Hh=innerHeight;
+  cv.width=W*r;cv.height=Hh*r;cx.setTransform(r,0,0,r,0,0);
+  var n=Math.min(70,Math.round(W*Hh/22000));pts=[];
+  for(var i=0;i<n;i++)pts.push({x:Math.random()*W,y:Math.random()*Hh,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25});
+  drawStatic();
+}
+function frame(move){
+  cx.clearRect(0,0,W,Hh);var D=Math.max(110,Math.min(W,Hh)/6),a=root.getAttribute('data-theme')==='dark'?.5:.4;
+  for(var i=0;i<pts.length;i++){var p=pts[i];
+    if(move){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>Hh)p.vy*=-1}
+    cx.fillStyle='rgba('+dot+','+a+')';cx.beginPath();cx.arc(p.x,p.y,1.6,0,6.3);cx.fill();
+    for(var j=i+1;j<pts.length;j++){var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<D){cx.strokeStyle='rgba('+dot+','+(a*(1-d/D)*.6)+')';cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.stroke()}}}
+}
+function drawStatic(){if(still||document.hidden)frame(false)}
+function loop(){frame(true);raf=requestAnimationFrame(loop)}
+function run(){cancelAnimationFrame(raf);if(!still&&!document.hidden)loop()}
 
-    <script>
-        const contentData = {
-            en: {
-                phrase1: "Peace be upon the Prophet",
-                phrase1Label: "(Islamic Blessing)",
-                phrase2: "My Lord, indeed I am, for whatever good You would send down to me, in need.",
-                phrase2Label: "(Quranic Verse)",
-                badge: "Junior Bug Bounty Hunter",
-                intro: "I am Mohamed. Nickname: <span class='font-black text-brand-dark dark:text-brand-light' dir='ltr'>0xmicho</span>. I am 16 years old and I love technology.",
-                toggleText: "AR",
-                dir: "ltr",
-                fontClass: "font-sans"
-            },
-            ar: {
-                phrase1: "صلي علي النبي",
-                phrase1Label: "",
-                phrase2: "رَبِّ إِنِّي لِمَا أَنزَلْتَ إِلَيَّ مِنْ خَيْرٍ فَقِيرٌ",
-                phrase2Label: "",
-                badge: "Junior Bug Bounty Hunter", // Keeping badge english inside arabic text as requested implicitly, or translating it works too. We will keep it as Junior Bug Bounty Hunter based on the prompt's AR text sample.
-                intro: "انا محمد. لقبي: <span class='font-black text-brand-dark dark:text-brand-light' dir='ltr'>0xmicho</span>. عمري 16 سنة وبحب التكنولوجيا. ",
-                toggleText: "EN",
-                dir: "rtl",
-                fontClass: "font-arabic"
-            }
-        };
+/* ---------- init ---------- */
+$('chips').innerHTML=CHIPS.map(function(c){return'<span>'+c+'</span>'}).join('');
+$('yr').textContent=new Date().getFullYear();
+var saved=load('lang');
+paint(saved==='ar'||saved==='en'?saved:((navigator.language||'').toLowerCase().indexOf('ar')===0?'ar':'en'));
+readDot();size();run();term();
 
-        let currentLang = 'en';
-
-        function toggleTheme() {
-            const html = document.documentElement;
-            html.classList.toggle('dark');
-        }
-
-        function toggleLanguage() {
-            const container = document.getElementById('contentContainer');
-            
-            // Fade Out
-            container.classList.add('content-fade-out');
-
-            // Swap content while invisible
-            setTimeout(() => {
-                currentLang = currentLang === 'en' ? 'ar' : 'en';
-                const data = contentData[currentLang];
-
-                // Update Direction and Lang attributes
-                document.documentElement.dir = data.dir;
-                document.documentElement.lang = currentLang;
-
-                // Update text
-                document.getElementById('phrase1').innerHTML = data.phrase1;
-                document.getElementById('phrase2').innerHTML = data.phrase2;
-                
-                // Handle the labels (hide them completely if empty in Arabic)
-                const p1Label = document.getElementById('phrase1Label');
-                const p2Label = document.getElementById('phrase2Label');
-                p1Label.innerHTML = data.phrase1Label;
-                p2Label.innerHTML = data.phrase2Label;
-                
-                if(data.phrase1Label === "") p1Label.style.display = "none";
-                else p1Label.style.display = "block";
-                
-                if(data.phrase2Label === "") p2Label.style.display = "none";
-                else p2Label.style.display = "block";
-
-                document.getElementById('badge').innerHTML = data.badge;
-                document.getElementById('introText').innerHTML = data.intro;
-                document.getElementById('langToggleBtn').innerText = data.toggleText;
-
-                // Update Base Fonts for Layout
-                if(currentLang === 'ar') {
-                    document.body.classList.remove('font-sans');
-                    document.body.classList.add('font-arabic');
-                    
-                    document.getElementById('phrase1').classList.add('text-3xl', 'sm:text-4xl');
-                    document.getElementById('phrase2').classList.add('text-2xl', 'sm:text-3xl');
-                } else {
-                    document.body.classList.remove('font-arabic');
-                    document.body.classList.add('font-sans');
-                    
-                    document.getElementById('phrase1').classList.remove('text-3xl', 'sm:text-4xl');
-                    document.getElementById('phrase2').classList.remove('text-2xl', 'sm:text-3xl');
-                }
-
-                // Fade In
-                container.classList.remove('content-fade-out');
-            }, 400); // Wait 400ms to match CSS transition
-        }
-    </script>
+$('themeBtn').addEventListener('click',toggleTheme);
+$('langBtn').addEventListener('click',toggleLang);
+$('copy').addEventListener('click',function(){
+  var ok=function(){toast(T[lang].copied)};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText('0xmicho').then(ok,ok)}
+  else{var t=document.createElement('textarea');t.value='0xmicho';document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(e){}t.remove();ok()}
+});
+document.addEventListener('keydown',function(e){
+  if(e.ctrlKey||e.metaKey||e.altKey)return;var k=e.key.toLowerCase();
+  if(k==='t')toggleTheme();else if(k==='l')toggleLang();
+});
+var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(size,200)});
+document.addEventListener('visibilitychange',run);
+matchMedia('(prefers-color-scheme: light)').addEventListener&&matchMedia('(prefers-color-scheme: light)').addEventListener('change',function(e){if(!load('theme'))setTheme(e.matches?'light':'dark')});
+})();
+</script>
 </body>
 </html>
