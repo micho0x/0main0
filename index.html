@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0xmicho - Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700;900&family=Amiri:ital@0;1&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class', 
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        arabic: ['Cairo', 'sans-serif'],
+                        amiri: ['Amiri', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            light: '#10b981', // Emerald green
+                            dark: '#059669',  
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        .transition-colors-all * {
+            transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease, fill 0.5s ease;
+        }
+
+        .content-fade {
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .content-fade-out {
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        .social-link svg, .social-link .text-icon {
+            transition: transform 0.3s ease, filter 0.3s ease, color 0.3s ease;
+        }
+        
+        .social-link:hover svg, .social-link:hover .text-icon {
+            transform: scale(1.15) translateY(-2px);
+        }
+
+        .dark .glow-effect {
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.08);
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+        
+        .light .glow-effect {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-[#0a0a0a] dark:text-gray-100 min-h-screen flex flex-col font-sans transition-colors-all">
+
+    <nav class="w-full p-4 sm:p-6 flex justify-between items-center z-20 sticky top-0 backdrop-blur-xl bg-white/50 dark:bg-[#0a0a0a]/50 border-b border-gray-200/50 dark:border-gray-800/50">
+        <div class="text-xl font-black tracking-tighter text-brand-dark dark:text-brand-light">
+            0x<span class="text-gray-900 dark:text-white">micho</span>
+        </div>
+        
+        <div class="flex items-center gap-3 sm:gap-4">
+            <button id="themeToggleBtn" onclick="toggleTheme()" class="p-2.5 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors focus:outline-none" aria-label="Toggle Theme">
+                <svg id="sunIcon" class="w-5 h-5 hidden dark:block text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+                <svg id="moonIcon" class="w-5 h-5 block dark:hidden text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg>
+            </button>
+
+            <button id="langToggleBtn" onclick="toggleLanguage()" class="px-5 py-2 font-bold text-sm rounded-full bg-gray-900 text-white dark:bg-white dark:text-black hover:bg-brand-dark dark:hover:bg-brand-light transition-colors focus:outline-none min-w-[3.5rem]">
+                AR
+            </button>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex flex-col items-center justify-center p-6 relative overflow-hidden">
+        
+        <!-- Background Glowing Orbs -->
+        <div class="absolute top-0 left-1/4 w-72 h-72 bg-brand-light/10 dark:bg-brand-dark/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-blue-500/10 dark:bg-blue-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div id="contentContainer" class="content-fade w-full max-w-3xl z-10 flex flex-col items-center text-center">
+            
+            <div class="mb-12 space-y-6">
+                <div class="space-y-1">
+                    <h1 id="phrase1" class="text-2xl sm:text-3xl font-amiri font-bold text-gray-800 dark:text-gray-200">
+                        Peace be upon the Prophet
+                    </h1>
+                    <p id="phrase1Label" class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest">
+                        (Islamic Blessing)
+                    </p>
+                </div>
+
+                <div class="space-y-2 mt-4 px-4">
+                    <h2 id="phrase2" class="text-xl sm:text-2xl font-amiri font-bold text-brand-dark dark:text-brand-light leading-relaxed">
+                        My Lord, indeed I am, for whatever good You would send down to me, in need.
+                    </h2>
+                    <p id="phrase2Label" class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest">
+                        (Quranic Verse)
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white/80 dark:bg-[#121212]/80 backdrop-blur-md rounded-3xl p-8 sm:p-12 w-full border border-gray-100 dark:border-gray-800 glow-effect">
+                
+                <div class="mb-6">
+                    <span id="badge" class="inline-block px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider bg-brand-light/10 text-brand-dark dark:text-brand-light border border-brand-light/20">
+                        Junior Bug Bounty Hunter
+                    </span>
+                </div>
+
+                <p id="introText" class="text-lg sm:text-xl md:text-2xl leading-relaxed text-gray-700 dark:text-gray-300 font-medium">
+                    I am Mohamed. Nickname: <span class="font-black text-brand-dark dark:text-brand-light">0xmicho</span>. I am 16 years old and I love technology.
+                </p>
+
+                <hr class="my-10 border-gray-200 dark:border-gray-800/80">
+
+                <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-10">
+                    
+                    <!-- X (Twitter) -->
+                    <a href="https://x.com/0xmicho1" target="_blank" rel="noopener noreferrer" class="social-link group flex flex-col items-center gap-3" title="X">
+                        <div class="p-4 rounded-2xl bg-gray-100 dark:bg-gray-800/80 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all shadow-sm">
+                            <svg class="w-7 h-7 text-gray-600 dark:text-gray-300 group-hover:text-white dark:group-hover:text-black" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs font-bold text-gray-500 dark:text-gray-400">X</span>
+                    </a>
+
+                    <!-- GitHub -->
+                    <a href="https://github.com/micho0x" target="_blank" rel="noopener noreferrer" class="social-link group flex flex-col items-center gap-3" title="GitHub">
+                        <div class="p-4 rounded-2xl bg-gray-100 dark:bg-gray-800/80 group-hover:bg-[#24292e] group-hover:text-white transition-all shadow-sm">
+                            <svg class="w-7 h-7 text-gray-600 dark:text-gray-300 group-hover:text-white" viewBox="0 0 24 24" fill="currentColor">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs font-bold text-gray-500 dark:text-gray-400">GitHub</span>
+                    </a>
+
+                    <!-- HackerOne (Text h1) -->
+                    <a href="https://hackerone.com/0xmicho?type=user" target="_blank" rel="noopener noreferrer" class="social-link group flex flex-col items-center gap-3" title="HackerOne">
+                        <div class="p-4 w-[60px] h-[60px] flex items-center justify-center rounded-2xl bg-gray-100 dark:bg-gray-800/80 group-hover:bg-brand-dark transition-all shadow-sm">
+                            <span class="text-icon font-black text-2xl tracking-tighter text-gray-800 dark:text-gray-200 group-hover:text-white leading-none">
+                                h1
+                            </span>
+                        </div>
+                        <span class="text-xs font-bold text-gray-500 dark:text-gray-400">HackerOne</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const contentData = {
+            en: {
+                phrase1: "Peace be upon the Prophet",
+                phrase1Label: "(Islamic Blessing)",
+                phrase2: "My Lord, indeed I am, for whatever good You would send down to me, in need.",
+                phrase2Label: "(Quranic Verse)",
+                badge: "Junior Bug Bounty Hunter",
+                intro: "I am Mohamed. Nickname: <span class='font-black text-brand-dark dark:text-brand-light' dir='ltr'>0xmicho</span>. I am 16 years old and I love technology.",
+                toggleText: "AR",
+                dir: "ltr",
+                fontClass: "font-sans"
+            },
+            ar: {
+                phrase1: "صلي علي النبي",
+                phrase1Label: "",
+                phrase2: "رَبِّ إِنِّي لِمَا أَنزَلْتَ إِلَيَّ مِنْ خَيْرٍ فَقِيرٌ",
+                phrase2Label: "",
+                badge: "Junior Bug Bounty Hunter", // Keeping badge english inside arabic text as requested implicitly, or translating it works too. We will keep it as Junior Bug Bounty Hunter based on the prompt's AR text sample.
+                intro: "انا محمد. لقبي: <span class='font-black text-brand-dark dark:text-brand-light' dir='ltr'>0xmicho</span>. عمري 16 سنة وبحب التكنولوجيا. انا Junior Bug Bounty Hunter.",
+                toggleText: "EN",
+                dir: "rtl",
+                fontClass: "font-arabic"
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+        }
+
+        function toggleLanguage() {
+            const container = document.getElementById('contentContainer');
+            
+            // Fade Out
+            container.classList.add('content-fade-out');
+
+            // Swap content while invisible
+            setTimeout(() => {
+                currentLang = currentLang === 'en' ? 'ar' : 'en';
+                const data = contentData[currentLang];
+
+                // Update Direction and Lang attributes
+                document.documentElement.dir = data.dir;
+                document.documentElement.lang = currentLang;
+
+                // Update text
+                document.getElementById('phrase1').innerHTML = data.phrase1;
+                document.getElementById('phrase2').innerHTML = data.phrase2;
+                
+                // Handle the labels (hide them completely if empty in Arabic)
+                const p1Label = document.getElementById('phrase1Label');
+                const p2Label = document.getElementById('phrase2Label');
+                p1Label.innerHTML = data.phrase1Label;
+                p2Label.innerHTML = data.phrase2Label;
+                
+                if(data.phrase1Label === "") p1Label.style.display = "none";
+                else p1Label.style.display = "block";
+                
+                if(data.phrase2Label === "") p2Label.style.display = "none";
+                else p2Label.style.display = "block";
+
+                document.getElementById('badge').innerHTML = data.badge;
+                document.getElementById('introText').innerHTML = data.intro;
+                document.getElementById('langToggleBtn').innerText = data.toggleText;
+
+                // Update Base Fonts for Layout
+                if(currentLang === 'ar') {
+                    document.body.classList.remove('font-sans');
+                    document.body.classList.add('font-arabic');
+                    
+                    document.getElementById('phrase1').classList.add('text-3xl', 'sm:text-4xl');
+                    document.getElementById('phrase2').classList.add('text-2xl', 'sm:text-3xl');
+                } else {
+                    document.body.classList.remove('font-arabic');
+                    document.body.classList.add('font-sans');
+                    
+                    document.getElementById('phrase1').classList.remove('text-3xl', 'sm:text-4xl');
+                    document.getElementById('phrase2').classList.remove('text-2xl', 'sm:text-3xl');
+                }
+
+                // Fade In
+                container.classList.remove('content-fade-out');
+            }, 400); // Wait 400ms to match CSS transition
+        }
+    </script>
+</body>
+</html>
